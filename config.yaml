@@ -1,0 +1,8 @@
+name: dutserver
+version: 3
+accesskey: linwei
+cron:
+	- description: add coursebbs those have not in the database
+      url: dutserver/index.php?r=plan/bbsadd
+      schedule: 0 0 * * *
+      timezone: Beijing
