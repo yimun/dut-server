@@ -207,7 +207,7 @@ class DebugController extends Controller
         echo CHtml::link('Api Test', $this->apiList), "  | ";
         echo CHtml::link('Api Stat', $this->apiStat), "  | ";
         echo CHtml::link('Gii Module', array('gii/')), "  | ";
-        echo CHtml::link('Phpmyadmin', 'http://localhost/phpmyadmin'), "  | ";
+        echo CHtml::link('Phpmyadmin', 'http://202.118.67.200:1234/phpmyadmin'), "  | ";
         echo CHtml::link('Logout', $this->apiQuit), "\n";
         echo "<hr/>\n";
     }

@@ -18,7 +18,13 @@ class Mcurl
     
     public function crawl ()
     {
-        $cookie_file = tempnam('C:\\Windows\\Temp', 'cookie');// 目录不存在则保存到系统内
+		$dir = $_SERVER['SystemRoot'].'/temp/cookie'.date('Ymd');
+		// echo $dir;
+		if(!file_exists($dir))
+		{
+			mkdir($dir);
+		}
+        $cookie_file = tempnam($dir, 'cookie');// 目录不存在则保存到系统内,当前根目录是在dutserver目录下，与index.php同级
         $ch = curl_init($this->loginUrl);
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -34,6 +40,7 @@ class Mcurl
         if(!$contents = curl_exec($ch))
             return null;
         curl_close($ch);
+		unlink($cookie_file);
         $contents = iconv("GBK", "utf-8//IGNORE", $contents);
         $contents = preg_replace('/\s|&nbsp;/', '', $contents);
 		//echo $contents;
